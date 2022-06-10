@@ -1,0 +1,69 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Laravel\Lumen\Routing\Controller as BaseController;
+use \Illuminate\Http\Response;
+class Controller extends BaseController
+{
+    protected function buildResponse($status, $data = null)
+    {
+        return response()->json(
+            [
+                'status' => $status,
+                'data' => $data
+            ]
+        );
+    }
+
+    protected function buildLoginResponse($data)
+    {
+        return response()->json($data);
+    }
+
+    protected function buildResponses($status, $name, $data)
+    {
+
+        $data = [
+            'status' => $status,
+            $name => $data
+        ];
+
+        return response()->json($data);
+    }
+
+    protected function buildRelationResponses($status, $name, $data, $relationName, $relation)
+    {
+        $response = [
+            'status' => $status,
+            $relationName => $relation,
+            $name => $data
+        ];
+
+        return response()->json($response);
+    }
+
+    protected function buildFailResponse($status, $message = null)
+    {
+        return response()->json(
+            [
+                'status' => $status,
+                'data' => $message
+            ],
+        );
+    }
+
+    protected function buildErrorResponse($message = null)
+    {
+        return response()->json(
+            [
+                'message' => $message
+            ],400
+        );
+    }
+
+    protected function buildBlobResponse($blob)
+    {
+        return response()->download($blob);
+    }
+}
