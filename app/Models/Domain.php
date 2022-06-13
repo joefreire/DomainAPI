@@ -10,7 +10,7 @@ class Domain extends Model
     use DomainObserver,HasFactory;
 
     protected $fillable = [
-        'domain_name', 'tld','created_at', 'expiration_at', 'owner'
+        'domain_name', 'tld','created_at', 'expiration_at', 'owner', 'updated_at'
     ];
     protected $with = [
         'nameservers', 'registrar'

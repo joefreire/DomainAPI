@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Domain;
 use App\Actions\UpdateDomain;
 use App\Http\Requests\StoreDomainRequest;
+use App\Http\Requests\BulkDomainRequest;
 use App\Exports\DomainExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Actions\BulkDomain;
 
 
 class DomainController extends Controller
@@ -50,6 +52,7 @@ class DomainController extends Controller
      *
      * @param  \App\Http\Requests\StoreDomainRequest  $request
      * @param  \App\Models\Domain  $domain
+     * @param  \App\Actions\UpdateDomain  $action
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function update(StoreDomainRequest $request, Domain $domain, UpdateDomain $action)
@@ -57,6 +60,20 @@ class DomainController extends Controller
         $data = $request->parse();
         $domain = $action->handle($domain, $data);
         return $this->buildResponse('success', $domain);
+    }
+    /**
+     * Bulk Import By Json
+     *
+     * @param  \App\Http\Requests\StoreDomainRequest  $request
+     * @param  \App\Actions\BulkDomain  $action
+     * 
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function bulk(BulkDomainRequest $request, BulkDomain $action)
+    {
+        $data = $request->parse();
+        $domain = $action->handle($data);
+        return $this->buildResponse('success', ['add'=>$domain, 'error'=> $request->getErrors()]);
     }
 
     /**

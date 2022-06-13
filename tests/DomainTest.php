@@ -37,6 +37,39 @@ class DomainTest extends TestCase
         $this->seeInDatabase('domains', ['domain_name' => $domain, 'tld' => $tld]);
         return $domain;
     }
+    public function createBulkDomain()
+    {
+        $faker = Faker::create();
+        $domain = $faker->domainWord;
+        $tld = '.' . $faker->tld;
+        while (!empty(Domain::where('domain_name', $domain)->first())) {
+            $domain = $faker->domainWord;
+        }
+        $domain2 = $faker->domainWord;
+        $tld2 = '.' . $faker->tld;
+        while (!empty(Domain::where('domain_name', $domain2)->first())) {
+            $domain2 = $faker->domainWord;
+        }
+        $domain3 = $faker->domainWord;
+        $tld3 = '.' . $faker->tld;
+        while (!empty(Domain::where('domain_name', $domain3)->first())) {
+            $domain3 = $faker->domainWord;
+        }
+        $response = $this->call('POST', $this->url, [
+            ['domain_name' => $domain,'tld' => $tld],
+            ['domain_name' => $domain2,'tld' => $tld2],
+            ['domain_name' => $domain3,'tld' => $tld3]
+        ], [
+            'headers' => [
+                'Authorization' => 'bearer ' . $this->userLoginData->token
+            ]
+        ]);
+        $this->assertEquals(200, $response->status());
+        $this->seeInDatabase('domains', ['domain_name' => $domain, 'tld' => $tld]);
+        $this->seeInDatabase('domains', ['domain_name' => $domain2, 'tld' => $tld2]);
+        $this->seeInDatabase('domains', ['domain_name' => $domain3, 'tld' => $tld3]);
+        return $domain;
+    }
     public function testCreateDomain()
     {
         $this->getData();

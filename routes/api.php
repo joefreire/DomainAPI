@@ -15,6 +15,7 @@ $router->group(['prefix' => 'domain', 'middleware' => 'auth'], function () use (
     $router->get('/{domain}', ['uses' => 'DomainController@show']);
     $router->get('/export/all', ['uses' => 'DomainController@export']);
     $router->post('/', ['uses' => 'DomainController@store']);
+    $router->post('/bulk', ['uses' => 'DomainController@bulk']);
     $router->delete('/{domain}', ['uses' => 'DomainController@destroy']);
     $router->patch('/{domain}', ['uses' => 'DomainController@update']);
 });
