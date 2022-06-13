@@ -11,7 +11,7 @@ class UserTest extends TestCase
             $response = $this->call('POST', '/register', ['name' => 'TestPHPUnit', 'email' => 'test@json.com', 'password' => 'password']);
             $this->assertEquals(200, $response->status());
         }
-        $this->seeInDatabase('users', ['email' => 'test11@json.com']);
+        $this->seeInDatabase('users', ['email' => 'test@json.com']);
     }
     public function testFailCreateUser()
     {
