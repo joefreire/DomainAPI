@@ -18,6 +18,5 @@ class AppServiceProvider extends ServiceProvider
 
     private function register_repositories()
     {
-        
     }
 }

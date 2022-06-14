@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+
 class UserLoginRequest
 {
     public function __construct(Request $request)

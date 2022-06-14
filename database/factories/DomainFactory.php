@@ -23,7 +23,7 @@ class DomainFactory extends Factory
     {
         return [
             'domain_name' => $this->faker->unique()->domainWord,
-            'tld' => '.'.$this->faker->tld,
+            'tld' => '.' . $this->faker->tld,
         ];
     }
 }

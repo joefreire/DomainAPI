@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Observers\DomainObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 class Domain extends Model
 {
-    use DomainObserver,HasFactory;
+    use DomainObserver, HasFactory;
 
     protected $fillable = [
-        'domain_name', 'tld','created_at', 'expiration_at', 'owner', 'updated_at'
+        'domain_name', 'tld', 'created_at', 'expiration_at', 'owner', 'updated_at'
     ];
     protected $with = [
         'nameservers', 'registrar'
@@ -23,7 +24,7 @@ class Domain extends Model
     }
     public function getFullDomainAttribute()
     {
-        return $this->domain_name.$this->tld;
+        return $this->domain_name . $this->tld;
     }
     public function registrar()
     {

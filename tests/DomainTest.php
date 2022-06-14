@@ -5,7 +5,6 @@ use Laravel\Lumen\Testing\DatabaseTransactions;
 use Faker\Factory as Faker;
 use App\Models\Domain;
 
-
 class DomainTest extends TestCase
 {
     protected  $url = 'domain/';
@@ -56,9 +55,9 @@ class DomainTest extends TestCase
             $domain3 = $faker->domainWord;
         }
         $response = $this->call('POST', $this->url, [
-            ['domain_name' => $domain,'tld' => $tld],
-            ['domain_name' => $domain2,'tld' => $tld2],
-            ['domain_name' => $domain3,'tld' => $tld3]
+            ['domain_name' => $domain, 'tld' => $tld],
+            ['domain_name' => $domain2, 'tld' => $tld2],
+            ['domain_name' => $domain3, 'tld' => $tld3]
         ], [
             'headers' => [
                 'Authorization' => 'bearer ' . $this->userLoginData->token
@@ -113,7 +112,7 @@ class DomainTest extends TestCase
         $this->getData();
         $response = $this->call(
             'GET',
-            $this->url.'export/all',
+            $this->url . 'export/all',
             [],
             [
                 'headers' => [

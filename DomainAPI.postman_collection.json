@@ -100,37 +100,19 @@
 		},
 		{
 			"name": "Me",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvbG9naW4iLCJpYXQiOjE2NTQ4NTAzOTMsIm5iZiI6MTY1NDg1MDM5MywianRpIjoiU2IwcnJ0TkRQY2s3blJkNyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.G5jCrW8BoM-JsQtFtBFEo7NjVby-DUMqznScL2yLWuk",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvbG9naW4iLCJpYXQiOjE2NTUxMTc2MjEsIm5iZiI6MTY1NTExNzYyMSwianRpIjoiWVdvVUdnc0hpWUFWalc4dCIsInN1YiI6IjkiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.I69LrEXNat2LTQ1OcK87iamIwfmX1sfopgLa_XC2dbc",
 							"type": "string"
 						}
 					]
 				},
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "email",
-							"value": "email@request.com",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "password",
-							"type": "text"
-						}
-					]
-				},
 				"url": {
 					"raw": "http://localhost:8000/me",
 					"protocol": "http",
@@ -153,7 +135,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvbG9naW4iLCJpYXQiOjE2NTQ4NTAzOTMsIm5iZiI6MTY1NDg1MDM5MywianRpIjoiU2IwcnJ0TkRQY2s3blJkNyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.G5jCrW8BoM-JsQtFtBFEo7NjVby-DUMqznScL2yLWuk",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvbG9naW4iLCJpYXQiOjE2NTUxMTc2MjEsIm5iZiI6MTY1NTExNzYyMSwianRpIjoiWVdvVUdnc0hpWUFWalc4dCIsInN1YiI6IjkiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.I69LrEXNat2LTQ1OcK87iamIwfmX1sfopgLa_XC2dbc",
 							"type": "string"
 						}
 					]
@@ -161,19 +143,8 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "email",
-							"value": "email@request.com",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "password",
-							"type": "text"
-						}
-					]
+					"mode": "urlencoded",
+					"urlencoded": []
 				},
 				"url": {
 					"raw": "http://localhost:8000/me/refresh",
@@ -496,9 +467,6 @@
 		},
 		{
 			"name": "Export Domains",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -512,23 +480,8 @@
 				},
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "domain_name",
-							"value": "google",
-							"type": "text"
-						},
-						{
-							"key": "tld",
-							"value": ".com",
-							"type": "text"
-						}
-					]
-				},
 				"url": {
-					"raw": "http://localhost:8000/domain/1",
+					"raw": "http://localhost:8000/domain/export/all",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -536,7 +489,8 @@
 					"port": "8000",
 					"path": [
 						"domain",
-						"1"
+						"export",
+						"all"
 					]
 				}
 			},

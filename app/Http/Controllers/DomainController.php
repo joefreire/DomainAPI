@@ -10,7 +10,6 @@ use App\Exports\DomainExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Actions\BulkDomain;
 
-
 class DomainController extends Controller
 {
     /**
@@ -73,7 +72,7 @@ class DomainController extends Controller
     {
         $data = $request->parse();
         $domain = $action->handle($data);
-        return $this->buildResponse('success', ['add'=>$domain, 'error'=> $request->getErrors()]);
+        return $this->buildResponse('success', ['add' => $domain, 'error' => $request->getErrors()]);
     }
 
     /**

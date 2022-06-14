@@ -7,6 +7,7 @@ use App\Models\Domain;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use App\Mails\ExpiringDomains;
+
 class CheckExpiringDomains extends Command
 {
     /**
@@ -42,8 +43,8 @@ class CheckExpiringDomains extends Command
     {
         $days = $this->argument('days');
         $dayCheck = Carbon::today()->addDays($days);
-        $domains = Domain::where('expiration_at','<',$dayCheck)->get();
-        if($domains->count() > 0){
+        $domains = Domain::where('expiration_at', '<', $dayCheck)->get();
+        if ($domains->count() > 0) {
             Mail::to(env('MAIL_EXPIRING', 'freire.joe@gmail.com'))->send(new ExpiringDomains($domains, $days));
         }
     }

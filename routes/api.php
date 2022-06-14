@@ -8,7 +8,7 @@ $router->post('/login', 'AuthController@login');
 $router->group(['prefix' => 'me', 'middleware' => 'auth'], function () use ($router) {
     $router->get('/', 'AuthController@me');
     $router->post('/refresh', 'AuthController@refresh');
-});   
+});
 
 $router->group(['prefix' => 'domain', 'middleware' => 'auth'], function () use ($router) {
     $router->get('/',  ['uses' => 'DomainController@index']);

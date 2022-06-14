@@ -14,7 +14,7 @@ class StoreDomainRequest
             'domain_name' => [
                 'required',
                 Rule::unique('domains')->where(function ($query) use ($request) {
-                    return $query->where('domain_name', $request->domain_name)->where('tld',$request->tld);
+                    return $query->where('domain_name', $request->domain_name)->where('tld', $request->tld);
                 }), 'string', 'max:100', 'min:1'
             ],
             'tld' => 'required|string|min:3|max:10|starts_with:.',

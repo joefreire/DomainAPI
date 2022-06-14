@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Observers;
+
 use App\Jobs\WhoisDomain;
+
 /**
  * Lumen doesn't register observers like laravel, so I created this trait to make it simpler
  */

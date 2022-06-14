@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserStoreRequest;
-use App\Service\UserLoginService;
+use App\Services\UserLoginService;
 use App\Actions\CreateUser;
 
 class AuthController extends Controller
